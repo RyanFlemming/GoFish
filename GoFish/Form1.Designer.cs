@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.yourHand = new System.Windows.Forms.ListBox();
+            this.listHand = new System.Windows.Forms.ListBox();
             this.buttonAsk = new System.Windows.Forms.Button();
-            this.yourName = new System.Windows.Forms.TextBox();
+            this.textName = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -40,13 +40,13 @@
             this.textBooks = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // yourHand
+            // listHand
             // 
-            this.yourHand.FormattingEnabled = true;
-            this.yourHand.Location = new System.Drawing.Point(481, 32);
-            this.yourHand.Name = "yourHand";
-            this.yourHand.Size = new System.Drawing.Size(120, 459);
-            this.yourHand.TabIndex = 0;
+            this.listHand.FormattingEnabled = true;
+            this.listHand.Location = new System.Drawing.Point(481, 32);
+            this.listHand.Name = "listHand";
+            this.listHand.Size = new System.Drawing.Size(120, 459);
+            this.listHand.TabIndex = 0;
             // 
             // buttonAsk
             // 
@@ -57,13 +57,15 @@
             this.buttonAsk.TabIndex = 1;
             this.buttonAsk.Text = "Ask for a card";
             this.buttonAsk.UseVisualStyleBackColor = true;
+            this.buttonAsk.Click += new System.EventHandler(this.buttonAsk_Click);
             // 
-            // yourName
+            // textName
             // 
-            this.yourName.Location = new System.Drawing.Point(12, 32);
-            this.yourName.Name = "yourName";
-            this.yourName.Size = new System.Drawing.Size(241, 20);
-            this.yourName.TabIndex = 2;
+            this.textName.Enabled = false;
+            this.textName.Location = new System.Drawing.Point(12, 32);
+            this.textName.Name = "textName";
+            this.textName.Size = new System.Drawing.Size(241, 20);
+            this.textName.TabIndex = 2;
             // 
             // nameLabel
             // 
@@ -91,6 +93,7 @@
             this.buttonStart.TabIndex = 5;
             this.buttonStart.Text = "Start the game!";
             this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // label1
             // 
@@ -140,9 +143,9 @@
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.yourName);
+            this.Controls.Add(this.textName);
             this.Controls.Add(this.buttonAsk);
-            this.Controls.Add(this.yourHand);
+            this.Controls.Add(this.listHand);
             this.Name = "GoFish";
             this.Text = "Go Fish";
             this.ResumeLayout(false);
@@ -152,9 +155,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox yourHand;
+        private System.Windows.Forms.ListBox listHand;
         private System.Windows.Forms.Button buttonAsk;
-        private System.Windows.Forms.TextBox yourName;
+        private System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonStart;
