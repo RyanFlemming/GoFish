@@ -31,6 +31,11 @@ namespace GoFish
             cards.Add(cardToAdd);
         }
 
+        public Card Deal()
+        {
+            return Deal(0);
+        }
+
         public Card Deal(int index)
         {
             Card CardToDeal = cards[index];
@@ -64,11 +69,6 @@ namespace GoFish
         public Card Peek(int cardNumber)
         {
             return cards[cardNumber];
-        }
-
-        public Card Deal()
-        {
-            return Deal(0);
         }
 
         public bool ContainsValue(Values value)

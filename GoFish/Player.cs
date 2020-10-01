@@ -56,7 +56,7 @@ namespace GoFish
         public Deck DoYouHaveAny(Values value)
         {
             Deck cardsMatched = cards.PullOutValues(value);
-            textBoxOnForm.Text += Name + " has " + " cardsIHave.Count" + " "
+            textBoxOnForm.Text += Name + " has " + cardsMatched.Count
                 + Card.Plural(value) + Environment.NewLine;
             return cardsMatched;
         }
@@ -101,7 +101,7 @@ namespace GoFish
         public int CardCount { get { return cards.Count; } }
         public void TakeCard(Card card) { cards.Add(card); }
         public IEnumerable<string> GetCardNames() { return cards.GetCardNames(); }
-        public Card peek(int cardNumber) { return cards.Peek(cardNumber); }
+        public Card Peek(int cardNumber) { return cards.Peek(cardNumber); }
         public void SortHand() { cards.SortByValue(); }
 
     }

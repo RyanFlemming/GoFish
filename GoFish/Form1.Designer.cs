@@ -47,6 +47,7 @@
             this.listHand.Name = "listHand";
             this.listHand.Size = new System.Drawing.Size(120, 459);
             this.listHand.TabIndex = 0;
+            this.listHand.DoubleClick += new System.EventHandler(this.buttonAsk_Click);
             // 
             // buttonAsk
             // 
