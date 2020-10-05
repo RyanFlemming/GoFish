@@ -62,7 +62,6 @@
             // 
             // textName
             // 
-            this.textName.Enabled = false;
             this.textName.Location = new System.Drawing.Point(12, 32);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(241, 20);
@@ -129,6 +128,7 @@
             this.textBooks.Multiline = true;
             this.textBooks.Name = "textBooks";
             this.textBooks.ReadOnly = true;
+            this.textBooks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBooks.Size = new System.Drawing.Size(460, 133);
             this.textBooks.TabIndex = 10;
             // 

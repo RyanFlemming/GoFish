@@ -83,10 +83,13 @@ namespace GoFish
             return false;
         }
 
+        // There are three PullOutBooks methods: in this class, Game.cs and Player.cs.
+        // Remove books and return remaining hand
+
         public Deck PullOutValues(Values value)
         {
             Deck deckToReturn = new Deck(new Card[] { });
-            for (int i = cards.Count - 1; i >= 0; i++)
+            for (int i = cards.Count - 1; i >= 0; i--)
             {
                 if (cards[i].Value == value)
                 {
@@ -94,26 +97,6 @@ namespace GoFish
                 }
             }
             return deckToReturn;
-        }
-
-        public bool HasBook(Values value)
-        {
-            int NumberOfCards = 0;
-            foreach (Card card in cards)
-            {
-                if (card.Value == value)
-                {
-                    NumberOfCards++;
-                }
-            }
-            if (NumberOfCards == 4)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public void SortByValue() => cards.Sort(new CardComparer_byValue());

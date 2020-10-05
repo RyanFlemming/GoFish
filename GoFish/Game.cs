@@ -43,26 +43,65 @@ namespace GoFish
             }
         }
 
+        // There are three PullOutBooks methods: in this class, Player.cs and Deck.cs.
+        // Call player.PullOutBooks and add results to books
+        // Then check hand count
+
         public bool PullOutBooks(Player player)
         {
-            throw new NotImplementedException();
+            IEnumerable<Values> booksPulled = player.PullOutBooks();
+            foreach (Values value in booksPulled)
+            {
+                books.Add(value, player);
+            }
+            if (player.CardCount == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         internal IEnumerable<string> GetPlayerCardNames()
         {
-            throw new NotImplementedException();
+            return players[0].GetCardNames();
         }
 
         internal string DescribeBooks()
         {
-            throw new NotImplementedException();
+            string booksCollection = "";
+            foreach (Values value in books.Keys)
+            {
+                booksCollection += books[value].Name + " has a book of "
+                    + Card.Plural(value) + Environment.NewLine;
+            }
+            return booksCollection;
         }
 
         internal string DescribePlayerHands()
         {
-            throw new NotImplementedException();
+            string description = "";
+            for (int i = 0; i < players.Count; i++)
+            {
+                description += players[i].Name + " has " + players[i].CardCount;
+                if (players[i].CardCount == 1)
+                {
+                    description += " card." + Environment.NewLine;
+                }
+                else
+                {
+                    description += " cards." + Environment.NewLine;
+                }
+            }
+            description += "The stock has " + stock.Count + " cards left.";
+            return description;
         }
 
+        // Magic happens here
+        // This manages the state of one round of play, removes books
+        // and ends the game if stock is empty
         internal bool PlayOneRound(int selectedPlayerCard)
         {
             Values cardsToAskFor = players[0].Peek(selectedPlayerCard).Value;
@@ -96,9 +135,57 @@ namespace GoFish
             return false;
         }
 
+        // Populate dictionary from values
+        // If dictionary contains name, increment value by 1, then
+        // Iterate through winners to grab highest value(s)
+
         internal string GetWinnerName()
         {
-            throw new NotImplementedException();
+            Dictionary<string, int> winners = new Dictionary<string, int>();
+            foreach (Values value in books.Keys)
+            {
+                string name = books[value].Name;
+                if (winners.ContainsKey(name))
+                {
+                    winners[name]++;
+                }
+                else
+                {
+                    winners.Add(name, 1);
+                }
+            }
+
+            int mostBooks = 0;
+            foreach (string name in winners.Keys)
+            {
+                if (winners[name] > mostBooks)
+                {
+                    mostBooks = winners[name];
+                }
+            }
+            bool tie = false;
+            string winnerList = "";
+            foreach (string name in winners.Keys)
+            {
+                if (winners[name] == mostBooks)
+                {
+                    if (!String.IsNullOrEmpty(winnerList))
+                    {
+                        winnerList += " and ";
+                        tie = true;
+                    }
+                    winnerList += name;
+                }
+            }
+            winnerList += " with " + mostBooks + " books ";
+            if (tie)
+            {
+                return "A tie between " + winnerList;
+            }
+            else
+            {
+                return winnerList;
+            }
         }
     }
 }

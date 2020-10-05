@@ -30,6 +30,9 @@ namespace GoFish
             return randomCard.Value;
         }
 
+        // There are three PullOutBooks methods: in this class, Game.cs and Deck.cs.
+        // Keep track of books and call Deck.PullOutValues
+
         public IEnumerable<Values> PullOutBooks()
         {
             List<Values> books = new List<Values>();
